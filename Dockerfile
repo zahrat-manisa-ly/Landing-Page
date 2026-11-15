@@ -1,0 +1,38 @@
+FROM node:22-alpine AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY . .
+
+ARG PUBLIC_API_BASE_URL=
+ARG PUBLIC_API_AIRPORTS_PATH=
+ARG PUBLIC_API_SEARCH_PATH=
+ARG PUBLIC_API_OFFER_PATH=
+ARG PUBLIC_API_SEARCH_METHOD=GET
+ARG PUBLIC_API_CREDENTIALS=same-origin
+ARG PUBLIC_DEFAULT_CURRENCY=USD
+ARG SITE_URL=
+
+ENV PUBLIC_API_BASE_URL=$PUBLIC_API_BASE_URL \
+    PUBLIC_API_AIRPORTS_PATH=$PUBLIC_API_AIRPORTS_PATH \
+    PUBLIC_API_SEARCH_PATH=$PUBLIC_API_SEARCH_PATH \
+    PUBLIC_API_OFFER_PATH=$PUBLIC_API_OFFER_PATH \
+    PUBLIC_API_SEARCH_METHOD=$PUBLIC_API_SEARCH_METHOD \
+    PUBLIC_API_CREDENTIALS=$PUBLIC_API_CREDENTIALS \
+    PUBLIC_DEFAULT_CURRENCY=$PUBLIC_DEFAULT_CURRENCY \
+    SITE_URL=$SITE_URL
+
+RUN npm run build
+
+FROM nginxinc/nginx-unprivileged:1.29-alpine AS runtime
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist /usr/share/nginx/html
+
+EXPOSE 8080
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --quiet --spider http://127.0.0.1:8080/en/ || exit 1

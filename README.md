@@ -75,6 +75,21 @@ These settings are visible to the browser. **Never put secrets, private API keys
 
 After changing environment values, restart the development server. Rebuild when build-time public values or `SITE_URL` change.
 
+## Docker
+
+The production image builds the static Astro site and serves it with unprivileged Nginx on port `8080`. Public frontend configuration is embedded at build time:
+
+```sh
+docker build -t manisa-travel-web \
+  --build-arg PUBLIC_API_BASE_URL=https://api.example.com \
+  --build-arg SITE_URL=https://www.example.com \
+  .
+
+docker run --rm -p 8080:8080 manisa-travel-web
+```
+
+Open `http://localhost:8080/en/`. Other optional public API build arguments match `.env.example`. Never pass passwords, tokens, private keys, or other secrets as build arguments.
+
 ## Commands
 
 ```sh
