@@ -1,0 +1,18 @@
+
+> manisa-travel-web@0.1.0 assets:check
+> node scripts/check-assets.mjs
+
+MISSING OR INVALID: coast.png (Figma 198:3387)
+MISSING OR INVALID: scooter.png (Figma 198:3389)
+MISSING OR INVALID: trail.png (Figma 198:3392)
+MISSING OR INVALID: istanbul.png (Figma 198:3419)
+MISSING OR INVALID: cappadocia.png (Figma 198:3423)
+MISSING OR INVALID: balloon.png (Figma 198:3427)
+MISSING OR INVALID: coast-mobile.png (Figma 198:3487)
+MISSING OR INVALID: scooter-mobile.png (Figma 198:3489)
+MISSING OR INVALID: istanbul-mobile.png (Figma 198:3515)
+MISSING OR INVALID: cappadocia-mobile.png (Figma 198:3519)
+MISSING OR INVALID: balloon-mobile.png (Figma 198:3523)
+MISSING OR INVALID: mediterranean.png (Figma 200:1658)
+MISSING OR INVALID: plane.svg (Figma 202:1782)
+13 design assets outstanding. Production visual acceptance is blocked.

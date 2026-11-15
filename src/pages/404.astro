@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export const prerender = true;
+---
+
+<BaseLayout title="Page not found" locale="en" noindex>
+  <section class="site-container py-24">
+    <p class="eyebrow">404 / MANISA TRAVEL</p><h1 class="mt-6 text-4xl font-bold">
+      This page is not here.
+    </h1><p class="mt-6 text-muted">Return home or start a new flight search.</p><div
+      class="mt-8 flex flex-wrap gap-4"
+    >
+      <a class="btn btn-secondary" href="/en/">Return home</a><a
+        class="btn btn-primary"
+        href="/en/flights/">Search flights</a
+      >
+    </div>
+  </section>
+</BaseLayout>

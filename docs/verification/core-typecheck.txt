@@ -1,0 +1,5 @@
+Command: tsc -p tsconfig.core.json
+Compiler: TypeScript 5.8.3
+Exit code: 0
+No diagnostics emitted.
+Scope: API/domain/localization modules only; excludes environment.ts and Astro/React components.

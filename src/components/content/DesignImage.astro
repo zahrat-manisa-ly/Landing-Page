@@ -1,0 +1,65 @@
+---
+import { existsSync, statSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { t } from '../../i18n/index';
+import type { Locale } from '../../lib/domain/types';
+interface Props {
+  file: string;
+  mobileFile?: string;
+  alt: string;
+  width: number;
+  height: number;
+  class?: string;
+  eager?: boolean;
+  locale: Locale;
+  node: string;
+}
+const {
+  file,
+  mobileFile,
+  alt,
+  width,
+  height,
+  class: className = '',
+  eager = false,
+  locale,
+  node,
+} = Astro.props;
+const has = (name: string) => {
+  const path = resolve('public/design', name);
+  return existsSync(path) && statSync(path).size > 40;
+};
+const present = has(file),
+  mobilePresent = mobileFile && has(mobileFile);
+---
+
+<span class:list={['asset-slot', className]} data-figma-node={node} data-asset={file}>
+  {
+    present ? (
+      <picture>
+        {mobilePresent && <source media="(max-width: 639px)" srcset={`/design/${mobileFile}`} />}
+        <img
+          src={`/design/${file}`}
+          alt={alt}
+          width={width}
+          height={height}
+          loading={eager ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchpriority={eager ? 'high' : 'auto'}
+        />
+      </picture>
+    ) : (
+      <span
+        class="asset-placeholder"
+        role="img"
+        aria-label={`${t(locale, 'assetMissing')}: ${alt || file}`}
+      >
+        <span>
+          {t(locale, 'assetMissing')}
+          <br />
+          {file}
+        </span>
+      </span>
+    )
+  }
+</span>

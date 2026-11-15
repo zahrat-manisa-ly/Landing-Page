@@ -1,0 +1,1 @@
+21 TypeScript/TSX modules inspected. This is syntax + source-boundary inspection, NOT an Astro/React typecheck.

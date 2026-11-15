@@ -1,0 +1,37 @@
+/* Source: selected MANISA HIFI frames, not Tailwind's default palette. */
+:root {
+  --page: #faf6ef;
+  --surface: #fffcf7;
+  --brand-subtle: #fff2eb;
+  --ink: #282c30;
+  --muted: #68635f;
+  --action: #d84b26;
+  --action-hover: #b83918;
+  --sea: #104c61;
+  --sun: #ffc33e;
+  --line: #e6ddcf;
+  --line-subtle: #f3ece0;
+  --on-action: #fffcf7;
+  --font-ui: 'Inter Variable', Inter, system-ui, sans-serif;
+  --elevation-card: 0 12px 32px rgb(40 44 48 / 0.05);
+  --shadow-card: var(--elevation-card);
+}
+:root[lang='ar'] {
+  --font-ui: 'Alexandria Variable', Alexandria, system-ui, sans-serif;
+}
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-brand-subtle: var(--brand-subtle);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-action: var(--action);
+  --color-action-hover: var(--action-hover);
+  --color-sea: var(--sea);
+  --color-sun: var(--sun);
+  --color-line: var(--line);
+  --color-line-subtle: var(--line-subtle);
+  --color-on-action: var(--on-action);
+  --font-sans: var(--font-ui);
+  --shadow-card: var(--elevation-card);
+}

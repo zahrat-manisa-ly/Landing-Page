@@ -1,0 +1,24 @@
+page_id,section,figma_desktop_node,figma_mobile_node,implementation_file,boundary,review_status
+P-001,S01 navigation,198:3372,198:3480,src/components/layout/Header.astro,Astro + native details,DRAFT - browser/visual review pending
+P-001,S02 editorial hero,198:3382,198:3484,src/pages/[lang]/index.astro,Astro,DRAFT - browser/visual review pending
+P-001,S03 search,198:3394,198:3491,src/features/search/FlightSearch.tsx,React client:visible,DRAFT - browser/visual review pending
+P-001,S04 inspiration,198:3416,198:3512,src/pages/[lang]/index.astro,Astro,DRAFT - browser/visual review pending
+P-001,S05 values,198:3431,198:3527,src/components/content/GuidanceCard.astro,Astro,DRAFT - browser/visual review pending
+P-001,S06 steps,198:3449,198:3545,src/pages/[lang]/index.astro,Astro,DRAFT - browser/visual review pending
+P-001,S07 support,198:3467,198:3560,src/components/content/SupportCTA.astro,Astro - future route disabled,DRAFT - browser/visual review pending
+P-001,S08 footer,198:3473,198:3566,src/components/layout/Footer.astro,Astro,DRAFT - browser/visual review pending
+P-002,S01 introduction,200:1640,200:1732,src/pages/[lang]/flights/index.astro,Astro,DRAFT - browser/visual review pending
+P-002,S02 search workspace,200:1640,200:1741,src/features/search/FlightSearch.tsx,React client:load,DRAFT - browser/visual review pending
+P-002,S03 guidance,200:1640,200:1763,src/components/content/GuidanceCard.astro,Astro,DRAFT - browser/visual review pending
+P-002,S04 availability notes,200:1640,200:1784,src/pages/[lang]/flights/index.astro,Astro,DRAFT - browser/visual review pending
+P-002,S05 booking shortcut,200:1640,200:1789,src/pages/[lang]/flights/index.astro,Astro - future route disabled,DRAFT - browser/visual review pending
+P-003,S01 introduction,200:2265,200:2379,src/pages/[lang]/flights/results.astro,Astro,DRAFT - browser/visual review pending
+P-003,S02 trip summary,200:2270,200:2383,src/features/results/FlightResults.tsx,React client:load,DRAFT - browser/visual review pending
+P-003,S03 filters,200:2277,200:2442,src/features/results/FiltersPanel.tsx,React inside results island,DRAFT - browser/visual review pending
+P-003,S04 flight cards,200:2309,200:2399,src/features/results/FlightCard.tsx,React inside results island,DRAFT - browser/visual review pending
+P-003,S05 empty state,200:2358,200:2451,src/features/results/FlightResults.tsx,Conditional React state,DRAFT - browser/visual review pending
+P-004,S01 overview,202:1578,202:1701,src/features/details/FlightDetails.tsx,React client:load,DRAFT - browser/visual review pending
+P-004,S02 timeline,202:1578,202:1718,src/features/details/FlightDetails.tsx,React inside details island,DRAFT - browser/visual review pending
+P-004,S03 fare selection,202:1578,202:1736,src/features/details/FlightDetails.tsx,React inside details island,DRAFT - browser/visual review pending
+P-004,S04 fare rules,202:1578,202:1756,src/features/details/FlightDetails.tsx,React inside details island,DRAFT - browser/visual review pending
+P-004,S05 selection summary,202:1578,202:1768,src/features/details/FlightDetails.tsx,React - checkout action disabled,DRAFT - browser/visual review pending

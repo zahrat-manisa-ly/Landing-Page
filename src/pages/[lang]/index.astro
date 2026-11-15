@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DesignImage from '../../components/content/DesignImage.astro';
+import GuidanceCard from '../../components/content/GuidanceCard.astro';
+import SupportCTA from '../../components/content/SupportCTA.astro';
+import FlightSearch from '../../features/search/FlightSearch';
+import { languagePaths, route, t } from '../../i18n/index';
+import type { Locale } from '../../lib/domain/types';
+import { publicApiConfig } from '../../lib/api/environment';
+import '../../styles/home.css';
+import '../../styles/search.css';
+export const getStaticPaths = languagePaths;
+export const prerender = true;
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const values = [
+  ['explore', 'exploreText'],
+  ['compare', 'compareText'],
+  ['book', 'bookText'],
+] as const;
+const steps = ['stepSearch', 'stepFare', 'stepTravelers', 'stepPay'] as const;
+---
+
+<BaseLayout title={t(locale, 'home')} description={t(locale, 'heroDescription')} locale={locale}>
+  <section class="editorial-hero" data-section="P-001-S02" data-figma-node="198:3382">
+    <div class="hero-canvas">
+      <div class="hero-copy">
+        <h1>{t(locale, 'heroFirst')}<br />{t(locale, 'heroSecond')}</h1><p class="hero-description">
+          <span class="desktop-copy">{t(locale, 'heroDescription')}</span><span class="mobile-copy"
+            >{t(locale, 'heroDescriptionFirst')}<br />{t(locale, 'heroDescriptionSecond')}</span
+          >
+        </p><a class="btn btn-primary hero-button" href={route(locale, 'flights')}
+          >{t(locale, 'exploreFlights')}
+          <span aria-hidden="true">{locale === 'ar' ? '\u2190' : '\u2192'}</span></a
+        >
+      </div>
+      <DesignImage
+        locale={locale}
+        file="coast.png"
+        mobileFile="coast-mobile.png"
+        alt="Amalfi coast"
+        width={560}
+        height={598}
+        class="hero-coast"
+        eager
+        node="198:3387"
+      />
+      <span class="hero-backdrop" aria-hidden="true"></span>
+      <DesignImage
+        locale={locale}
+        file="scooter.png"
+        mobileFile="scooter-mobile.png"
+        alt=""
+        width={342}
+        height={280}
+        class="hero-scooter"
+        eager
+        node="198:3389"
+      />
+      <p class="hero-edition">{t(locale, 'journeyEdition')}</p><DesignImage
+        locale={locale}
+        file="trail.png"
+        alt=""
+        width={232}
+        height={112}
+        class="hero-trail"
+        node="198:3392"
+      />
+    </div>
+  </section>
+  <section class="home-search" id="search" data-section="P-001-S03">
+    <div class="home-search-inner">
+      <FlightSearch locale={locale} config={publicApiConfig} client:visible /><noscript
+        ><p class="notice">{t(locale, 'noScript')}</p></noscript
+      >
+    </div>
+  </section>
+  <section class="destination-inspiration" data-section="P-001-S04">
+    <div class="inspiration-canvas">
+      <h2>{t(locale, 'whereNext')}</h2><p class="inspiration-description">
+        <span class="desktop-copy">{t(locale, 'inspiration')}</span><span class="mobile-copy"
+          >{t(locale, 'inspirationMobile')}</span
+        >
+      </p>
+      <div class="destination-main">
+        <DesignImage
+          locale={locale}
+          file="istanbul.png"
+          mobileFile="istanbul-mobile.png"
+          alt="Istanbul city skyline and waterfront"
+          width={756}
+          height={400}
+          node="198:3419"
+        /><span class="destination-label">{t(locale, 'featureOne')}</span><p
+          class="destination-name"
+        >
+          {t(locale, 'istanbul')}
+        </p>
+      </div>
+      <div class="destination-secondary">
+        <DesignImage
+          locale={locale}
+          file="cappadocia.png"
+          mobileFile="cappadocia-mobile.png"
+          alt="Hot air balloons above Cappadocia"
+          width={472}
+          height={292}
+          node="198:3423"
+        /><span class="destination-label">{t(locale, 'featureTwo')}</span><p
+          class="destination-name"
+        >
+          {t(locale, 'cappadocia')}
+        </p>
+      </div>
+      <DesignImage
+        locale={locale}
+        file="balloon.png"
+        mobileFile="balloon-mobile.png"
+        alt=""
+        width={156}
+        height={214}
+        class="destination-balloon"
+        node="198:3427"
+      />
+      <div class="destination-caption">
+        <h3>
+          <span class="desktop-copy">{t(locale, 'horizon')}</span><span class="mobile-copy"
+            >{t(locale, 'horizonMobile')}</span
+          >
+        </h3><p>{t(locale, 'horizonDescription')}</p>
+      </div>
+    </div>
+  </section>
+  <section class="home-values" data-section="P-001-S05">
+    <div class="site-container">
+      <h2>
+        <span class="desktop-copy">{t(locale, 'why')}</span><span class="mobile-copy"
+          >{t(locale, 'whyMobile')}</span
+        >
+      </h2><div class="values-grid">
+        {
+          values.map(([title, description], index) => (
+            <GuidanceCard
+              number={`0${index + 1}`}
+              title={t(locale, title)}
+              description={t(locale, description)}
+              divider={false}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="home-steps site-container" data-section="P-001-S06">
+    <h2>
+      <span class="desktop-copy">{t(locale, 'how')}</span><span class="mobile-copy"
+        >{t(locale, 'howMobile')}</span
+      >
+    </h2><ol>
+      {
+        steps.map((key, index) => (
+          <li>
+            <span>{t(locale, key)}</span>
+            {index < 3 && (
+              <span class="step-arrow" aria-hidden="true">
+                {locale === 'ar' ? '\u2190' : '\u2192'}
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+  <SupportCTA locale={locale} /><div class="footer-gap"></div>
+</BaseLayout>

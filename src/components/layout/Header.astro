@@ -1,0 +1,331 @@
+---
+import { route, t } from '../../i18n/index';
+import type { Locale } from '../../lib/domain/types';
+import { publicApiConfig } from '../../lib/api/environment';
+import HeaderSession from '../../features/auth/HeaderSession';
+import PendingLink from '../ui/PendingLink.astro';
+interface Props {
+  locale: Locale;
+  currency: string;
+}
+const { locale, currency } = Astro.props;
+const alternate = locale === 'en' ? 'ar' : 'en';
+const otherPath = Astro.url.pathname.replace(/^\/(en|ar)(?=\/|$)/, `/${alternate}`);
+---
+
+<header class="site-header">
+  <a class="wordmark" href={route(locale)} aria-label="MANISA Travel"
+    ><span aria-hidden="true">&#9682;</span> MANISA<small>TRAVEL</small></a
+  >
+  <nav class="desktop-nav" aria-label={t(locale, 'menu')}>
+    <a
+      href={route(locale, 'flights')}
+      aria-current={Astro.url.pathname === route(locale, 'flights') ? 'page' : undefined}
+      data-active={Astro.url.pathname.includes('/flights')}>{t(locale, 'flights')}</a
+    >
+    <PendingLink locale={locale}>{t(locale, 'manage')}</PendingLink>
+    <PendingLink locale={locale}>{t(locale, 'help')}</PendingLink>
+  </nav>
+  <div class="desktop-actions">
+    <a href={otherPath} data-language-link lang={alternate} dir="auto"
+      >{
+        locale === 'en'
+          ? 'EN / \u0627\u0644\u0639\u0631\u0628\u064a\u0629'
+          : 'English / \u0627\u0644\u0639\u0631\u0628\u064a\u0629'
+      }</a
+    >
+    <span class="currency" title={t(locale, 'validCurrency')}>{currency}</span>
+  </div>
+  <HeaderSession
+    locale={locale}
+    available={Boolean(publicApiConfig.baseUrl)}
+    currentPath={Astro.url.pathname}
+    mobileTargetId="mobile-session"
+    client:load
+  />
+  <details class="mobile-navigation">
+    <summary aria-label={t(locale, 'menu')}><span aria-hidden="true">&#9776;</span></summary>
+    <nav aria-label={t(locale, 'menu')}>
+      <a href={route(locale, 'flights')}>{t(locale, 'flights')}</a>
+      <PendingLink locale={locale}>{t(locale, 'manage')}</PendingLink>
+      <PendingLink locale={locale}>{t(locale, 'support')}</PendingLink>
+      <a href={otherPath} data-language-link lang={alternate}
+        >{locale === 'en' ? '\u0627\u0644\u0639\u0631\u0628\u064a\u0629' : 'English'}</a
+      >
+      <span>{currency}</span>
+      <div id="mobile-session"></div>
+      <a href="/implementation/">{t(locale, 'status')}</a>
+    </nav>
+  </details>
+</header>
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-language-link]').forEach((link) => {
+    link.search = window.location.search;
+  });
+  const menu = document.querySelector<HTMLDetailsElement>('.mobile-navigation');
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu?.open) {
+      menu.open = false;
+      menu.querySelector('summary')?.focus();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (menu?.open && event.target instanceof Node && !menu.contains(event.target))
+      menu.open = false;
+  });
+</script>
+<style>
+  .site-header {
+    min-height: 94px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding-inline: 5%;
+    background: var(--surface);
+    position: relative;
+    z-index: 30;
+  }
+  .wordmark {
+    font-weight: 700;
+    font-size: 25px;
+    color: var(--action);
+    text-decoration: none;
+    line-height: 1.2;
+    position: relative;
+    padding-bottom: 14px;
+    white-space: nowrap;
+  }
+  .wordmark small {
+    font-size: 10px;
+    color: var(--ink);
+    position: absolute;
+    bottom: 0;
+    inset-inline-start: 41px;
+  }
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 58px;
+    margin-inline-start: auto;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  .desktop-nav a {
+    text-decoration: none;
+  }
+  .desktop-nav [data-active='true'] {
+    color: var(--action);
+  }
+  .desktop-actions {
+    display: flex;
+    gap: 42px;
+    align-items: center;
+    margin-inline-start: auto;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .desktop-actions a {
+    text-decoration: none;
+  }
+  .site-header :global(.desktop-session) {
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    min-width: 94px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .site-header :global(.sign-in),
+  .site-header :global(.session-error) {
+    min-height: 46px;
+    padding: 14px 18px;
+    border: 0;
+    background: var(--brand-subtle);
+    color: var(--ink);
+    text-transform: uppercase;
+    text-decoration: none;
+    font: inherit;
+  }
+  .site-header :global(.session-error) {
+    color: var(--action);
+  }
+  .site-header :global(.session-loading) {
+    display: block;
+    width: 94px;
+    height: 46px;
+    background: var(--line-subtle);
+    animation: shimmer 1.4s linear infinite;
+    background-image: linear-gradient(
+      100deg,
+      var(--line-subtle) 25%,
+      var(--surface) 50%,
+      var(--line-subtle) 75%
+    );
+    background-size: 200% 100%;
+  }
+  .site-header :global(.account-menu) {
+    position: relative;
+  }
+  .site-header :global(.account-menu summary) {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 12px;
+    background: var(--brand-subtle);
+    text-transform: none;
+  }
+  .site-header :global(.account-initials) {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--action);
+    color: var(--on-action);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    flex: none;
+  }
+  .site-header :global(.account-popover) {
+    position: absolute;
+    top: calc(100% + 10px);
+    inset-inline-end: 0;
+    width: 250px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-card);
+    display: grid;
+    gap: 5px;
+    white-space: normal;
+  }
+  .site-header :global(.account-popover .account-label) {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .site-header :global(.account-popover strong) {
+    font-size: 14px;
+  }
+  .site-header :global(.account-popover > span) {
+    font-size: 12px;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+  .site-header :global(.account-popover button) {
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    background: var(--brand-subtle);
+    color: var(--action);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .mobile-navigation {
+    display: none;
+  }
+  @media (max-width: 1199px) {
+    .desktop-nav {
+      gap: 24px;
+    }
+    .desktop-actions {
+      gap: 20px;
+    }
+    .site-header {
+      gap: 24px;
+      padding-inline: 24px;
+    }
+  }
+  @media (max-width: 899px) {
+    .site-header {
+      height: 76px;
+      min-height: 76px;
+      justify-content: space-between;
+      padding-inline: 20px;
+    }
+    .wordmark {
+      font-size: 21px;
+    }
+    .desktop-nav,
+    .desktop-actions,
+    .site-header :global(.desktop-session) {
+      display: none;
+    }
+    .mobile-navigation {
+      display: block;
+    }
+    .mobile-navigation summary {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+    }
+    .mobile-navigation nav {
+      position: absolute;
+      top: 76px;
+      inset-inline: 0;
+      background: var(--surface);
+      box-shadow: var(--shadow-card);
+      border-block: 1px solid var(--line);
+      padding: 24px;
+      display: grid;
+      gap: 4px;
+    }
+    .mobile-navigation nav > * {
+      padding: 12px 8px;
+      font-size: 14px;
+    }
+    .mobile-navigation a {
+      text-decoration: none;
+    }
+    .mobile-navigation :global(#mobile-session) {
+      padding: 0;
+      border-block: 1px solid var(--line);
+    }
+    .mobile-navigation :global(.mobile-sign-in),
+    .mobile-navigation :global(.mobile-session-action),
+    .mobile-navigation :global(.mobile-session-loading) {
+      display: block;
+      width: 100%;
+      padding: 16px 8px;
+      border: 0;
+      background: transparent;
+      text-align: start;
+      color: var(--action);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .mobile-navigation :global(.mobile-account) {
+      display: grid;
+      gap: 12px;
+      padding-block: 16px;
+    }
+    .mobile-navigation :global(.mobile-account-identity) {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mobile-navigation :global(.mobile-account-identity > span:last-child) {
+      display: grid;
+      gap: 1px;
+      min-width: 0;
+    }
+    .mobile-navigation :global(.mobile-account-identity small) {
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+    .mobile-navigation :global(.mobile-account button) {
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: var(--brand-subtle);
+      color: var(--action);
+      font-weight: 700;
+      text-align: start;
+    }
+  }
+</style>

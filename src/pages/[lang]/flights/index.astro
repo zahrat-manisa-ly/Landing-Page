@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FlightSearch from '../../../features/search/FlightSearch';
+import DesignImage from '../../../components/content/DesignImage.astro';
+import GuidanceCard from '../../../components/content/GuidanceCard.astro';
+import { languagePaths, t } from '../../../i18n/index';
+import type { Locale } from '../../../lib/domain/types';
+import { publicApiConfig } from '../../../lib/api/environment';
+import '../../../styles/search.css';
+import '../../../styles/search-page.css';
+export const getStaticPaths = languagePaths;
+export const prerender = true;
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const guidance = [
+  ['routeDecision', 'routeDecisionText'],
+  ['datesDecision', 'datesDecisionText'],
+  ['travelersDecision', 'travelersDecisionText'],
+] as const;
+---
+
+<BaseLayout
+  title={t(locale, 'flights')}
+  description={t(locale, 'searchIntro')}
+  locale={locale}
+  pageClass="bg-page"
+>
+  <div class="search-introduction">
+    <div>
+      <p class="eyebrow">{t(locale, 'planJourney')}</p><h1>
+        <span class="desktop-search-copy">{t(locale, 'headed')}</span><span
+          class="mobile-search-copy">{t(locale, 'headedMobile')}</span
+        >
+      </h1><p class="search-page-description">{t(locale, 'searchIntro')}</p>
+    </div><aside class="journey-motif" aria-label={t(locale, 'routeInvitation')}>
+      <DesignImage
+        locale={locale}
+        file="mediterranean.png"
+        alt="Mediterranean coast viewed from an aircraft window"
+        width={310}
+        height={92}
+        node="200:1658"
+      /><p aria-hidden="true" dir="ltr">
+        MJI &nbsp; &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; &nbsp; ?
+      </p><span>{t(locale, 'routeInvitation')}</span>
+    </aside>
+  </div>
+  <section class="search-workspace" data-section="P-002-S02">
+    <div class="workspace-guidance">
+      <h2 class="eyebrow">{t(locale, 'buildItinerary')}</h2><p>{t(locale, 'supportedTrips')}</p>
+    </div><FlightSearch locale={locale} config={publicApiConfig} client:load /><p
+      class="workspace-notice"
+    >
+      {t(locale, 'inventoryNote')}
+    </p><noscript><p class="notice">{t(locale, 'noScript')}</p></noscript>
+  </section>
+  <section class="search-guidance" data-section="P-002-S03">
+    <p class="eyebrow">{t(locale, 'planConfidence')}</p><h2>
+      <span class="desktop-search-copy">{t(locale, 'simpleSearch')}</span><span
+        class="mobile-search-copy">{t(locale, 'simpleSearchMobile')}</span
+      >
+    </h2><div class="search-guidance-grid">
+      {
+        guidance.map(([title, description], index) => (
+          <GuidanceCard
+            number={`0${index + 1}`}
+            title={t(locale, title)}
+            description={t(locale, description)}
+            highlight={index === 1}
+          />
+        ))
+      }
+    </div>
+  </section>
+  <section class="search-expectations" data-section="P-002-S04">
+    <p class="eyebrow">{t(locale, 'beforeSearch')}</p><h2>{t(locale, 'expectations')}</h2><p>
+      {t(locale, 'expectationsText')}
+    </p>
+  </section>
+  <section class="booking-shortcut" data-section="P-002-S05">
+    <div><h2>{t(locale, 'alreadyBooked')}</h2><p>{t(locale, 'retrievalText')}</p></div><span
+      class="btn btn-primary"
+      role="link"
+      aria-disabled="true"
+      title={t(locale, 'future')}>{t(locale, 'manage')} <span aria-hidden="true">&rarr;</span></span
+    >
+  </section>
+</BaseLayout>

@@ -1,0 +1,11 @@
+---
+import { t } from '../../i18n/index';
+import type { Locale } from '../../lib/domain/types';
+interface Props {
+  locale: Locale;
+  class?: string;
+}
+const { locale, class: className } = Astro.props;
+---
+
+<span role="link" aria-disabled="true" title={t(locale, 'future')} class={className}><slot /></span>

@@ -1,0 +1,524 @@
+
+> manisa-travel-web@0.1.0 test
+> node --experimental-strip-types --test tests/unit/*.test.ts
+
+TAP version 13
+# (node:1642) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: blank endpoints are explicitly unconfigured
+ok 1 - blank endpoints are explicitly unconfigured
+  ---
+  duration_ms: 1.473466
+  type: 'test'
+  ...
+# Subtest: base URL path prefix is preserved
+ok 2 - base URL path prefix is preserved
+  ---
+  duration_ms: 0.214097
+  type: 'test'
+  ...
+# Subtest: same-origin relative base is supported
+ok 3 - same-origin relative base is supported
+  ---
+  duration_ms: 0.203982
+  type: 'test'
+  ...
+# Subtest: insecure non-local backend is rejected
+ok 4 - insecure non-local backend is rejected
+  ---
+  duration_ms: 0.468215
+  type: 'test'
+  ...
+# Subtest: localhost HTTP is allowed for development
+ok 5 - localhost HTTP is allowed for development
+  ---
+  duration_ms: 0.171635
+  type: 'test'
+  ...
+# Subtest: URL credentials and protocol-relative endpoint paths are rejected
+ok 6 - URL credentials and protocol-relative endpoint paths are rejected
+  ---
+  duration_ms: 0.185675
+  type: 'test'
+  ...
+# Subtest: raw and encoded traversal is rejected
+ok 7 - raw and encoded traversal is rejected
+  ---
+  duration_ms: 0.164865
+  type: 'test'
+  ...
+# Subtest: no request is made when API is unconfigured
+ok 8 - no request is made when API is unconfigured
+  ---
+  duration_ms: 0.449597
+  type: 'test'
+  ...
+# Subtest: valid normalized airport response is accepted
+ok 9 - valid normalized airport response is accepted
+  ---
+  duration_ms: 17.943654
+  type: 'test'
+  ...
+# Subtest: invalid airport timezone is rejected
+ok 10 - invalid airport timezone is rejected
+  ---
+  duration_ms: 0.64698
+  type: 'test'
+  ...
+# Subtest: minor units must be safe nonnegative integers
+ok 11 - minor units must be safe nonnegative integers
+  ---
+  duration_ms: 0.430379
+  type: 'test'
+  ...
+# Subtest: missing price is not replaced with a zero price
+ok 12 - missing price is not replaced with a zero price
+  ---
+  duration_ms: 0.405472
+  type: 'test'
+  ...
+# Subtest: valid offer is accepted without invented defaults
+ok 13 - valid offer is accepted without invented defaults
+  ---
+  duration_ms: 1.133772
+  type: 'test'
+  ...
+# Subtest: missing authoritative availability is rejected
+ok 14 - missing authoritative availability is rejected
+  ---
+  duration_ms: 0.24941
+  type: 'test'
+  ...
+# Subtest: unknown response envelopes are rejected
+ok 15 - unknown response envelopes are rejected
+  ---
+  duration_ms: 0.216731
+  type: 'test'
+  ...
+# Subtest: duplicate offers are rejected
+ok 16 - duplicate offers are rejected
+  ---
+  duration_ms: 0.653289
+  type: 'test'
+  ...
+# Subtest: invalid total count is rejected
+ok 17 - invalid total count is rejected
+  ---
+  duration_ms: 0.442246
+  type: 'test'
+  ...
+# Subtest: arrival before departure is rejected
+ok 18 - arrival before departure is rejected
+  ---
+  duration_ms: 0.201129
+  type: 'test'
+  ...
+# Subtest: timestamp without timezone is rejected
+ok 19 - timestamp without timezone is rejected
+  ---
+  duration_ms: 0.412562
+  type: 'test'
+  ...
+# Subtest: mixed currency within offer fare choices is rejected
+ok 20 - mixed currency within offer fare choices is rejected
+  ---
+  duration_ms: 0.351832
+  type: 'test'
+  ...
+# Subtest: request headers, credential policy and query mapping are explicit
+ok 21 - request headers, credential policy and query mapping are explicit
+  ---
+  duration_ms: 23.970833
+  type: 'test'
+  ...
+# Subtest: HTTP 401 maps to a sanitized unauthorized error
+ok 22 - HTTP 401 maps to a sanitized unauthorized error
+  ---
+  duration_ms: 0.378862
+  type: 'test'
+  ...
+# Subtest: HTTP 403 maps to a sanitized unauthorized error
+ok 23 - HTTP 403 maps to a sanitized unauthorized error
+  ---
+  duration_ms: 0.179946
+  type: 'test'
+  ...
+# Subtest: HTTP 404 maps to a sanitized notFound error
+ok 24 - HTTP 404 maps to a sanitized notFound error
+  ---
+  duration_ms: 0.210953
+  type: 'test'
+  ...
+# Subtest: HTTP 409 maps to a sanitized expired error
+ok 25 - HTTP 409 maps to a sanitized expired error
+  ---
+  duration_ms: 0.204563
+  type: 'test'
+  ...
+# Subtest: HTTP 410 maps to a sanitized expired error
+ok 26 - HTTP 410 maps to a sanitized expired error
+  ---
+  duration_ms: 0.220557
+  type: 'test'
+  ...
+# Subtest: HTTP 429 maps to a sanitized rateLimited error
+ok 27 - HTTP 429 maps to a sanitized rateLimited error
+  ---
+  duration_ms: 0.160768
+  type: 'test'
+  ...
+# Subtest: HTTP 500 maps to a sanitized server error
+ok 28 - HTTP 500 maps to a sanitized server error
+  ---
+  duration_ms: 0.148611
+  type: 'test'
+  ...
+# Subtest: HTML response is not treated as inventory
+ok 29 - HTML response is not treated as inventory
+  ---
+  duration_ms: 0.636564
+  type: 'test'
+  ...
+# Subtest: malformed JSON is rejected
+ok 30 - malformed JSON is rejected
+  ---
+  duration_ms: 0.52606
+  type: 'test'
+  ...
+# Subtest: network errors are surfaced without sample inventory
+ok 31 - network errors are surfaced without sample inventory
+  ---
+  duration_ms: 0.254988
+  type: 'test'
+  ...
+# Subtest: request timeout is distinct from cancellation
+ok 32 - request timeout is distinct from cancellation
+  ---
+  duration_ms: 13.486152
+  type: 'test'
+  ...
+# Subtest: external cancellation remains AbortError
+ok 33 - external cancellation remains AbortError
+  ---
+  duration_ms: 0.535754
+  type: 'test'
+  ...
+# Subtest: pre-aborted signal is respected
+ok 34 - pre-aborted signal is respected
+  ---
+  duration_ms: 0.242139
+  type: 'test'
+  ...
+# Subtest: failed request is not automatically retried
+ok 35 - failed request is not automatically retried
+  ---
+  duration_ms: 0.31673
+  type: 'test'
+  ...
+# Subtest: GET search follows adapter query mapping
+ok 36 - GET search follows adapter query mapping
+  ---
+  duration_ms: 1.387809
+  type: 'test'
+  ...
+# Subtest: POST search has JSON body and no implicit retry
+ok 37 - POST search has JSON body and no implicit retry
+  ---
+  duration_ms: 0.867447
+  type: 'test'
+  ...
+# Subtest: search rejects response prices in an unexpected currency
+ok 38 - search rejects response prices in an unexpected currency
+  ---
+  duration_ms: 0.880245
+  type: 'test'
+  ...
+# Subtest: offer identifier must match the requested offer
+ok 39 - offer identifier must match the requested offer
+  ---
+  duration_ms: 0.787027
+  type: 'test'
+  ...
+# Subtest: impossible calendar dates in timestamps are rejected
+ok 40 - impossible calendar dates in timestamps are rejected
+  ---
+  duration_ms: 0.419412
+  type: 'test'
+  ...
+# Subtest: duplicate journey identifiers are rejected
+ok 41 - duplicate journey identifiers are rejected
+  ---
+  duration_ms: 0.557997
+  type: 'test'
+  ...
+# Subtest: duplicate segment identifiers are rejected
+ok 42 - duplicate segment identifiers are rejected
+  ---
+  duration_ms: 0.510977
+  type: 'test'
+  ...
+# Subtest: hour 24 is rejected by the RFC3339 view contract
+ok 43 - hour 24 is rejected by the RFC3339 view contract
+  ---
+  duration_ms: 0.798505
+  type: 'test'
+  ...
+# Subtest: non-string cabin value yields a contract error
+ok 44 - non-string cabin value yields a contract error
+  ---
+  duration_ms: 0.319905
+  type: 'test'
+  ...
+# (node:1643) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: money uses explicit minor-unit scale including three decimals
+ok 45 - money uses explicit minor-unit scale including three decimals
+  ---
+  duration_ms: 30.64351
+  type: 'test'
+  ...
+# Subtest: zero-decimal currency is not divided by 100
+ok 46 - zero-decimal currency is not divided by 100
+  ---
+  duration_ms: 0.355898
+  type: 'test'
+  ...
+# Subtest: flight time uses airport timezone, not browser timezone
+ok 47 - flight time uses airport timezone, not browser timezone
+  ---
+  duration_ms: 5.665603
+  type: 'test'
+  ...
+# Subtest: arrival next-day indicator compares local calendar dates
+ok 48 - arrival next-day indicator compares local calendar dates
+  ---
+  duration_ms: 0.982737
+  type: 'test'
+  ...
+# Subtest: date-only formatting retains the intended day
+ok 49 - date-only formatting retains the intended day
+  ---
+  duration_ms: 0.365282
+  type: 'test'
+  ...
+# Subtest: duration is based on supplied duration, not displayed clock subtraction
+ok 50 - duration is based on supplied duration, not displayed clock subtraction
+  ---
+  duration_ms: 0.20842
+  type: 'test'
+  ...
+# Subtest: backend ranking is preserved for Recommended
+ok 51 - backend ranking is preserved for Recommended
+  ---
+  duration_ms: 3.301627
+  type: 'test'
+  ...
+# Subtest: cheapest sorting does not mutate source inventory
+ok 52 - cheapest sorting does not mutate source inventory
+  ---
+  duration_ms: 0.47217
+  type: 'test'
+  ...
+# Subtest: cross-currency offers are not silently price-ranked
+ok 53 - cross-currency offers are not silently price-ranked
+  ---
+  duration_ms: 0.489326
+  type: 'test'
+  ...
+# Subtest: total and per-adult prices are not compared as equivalents
+ok 54 - total and per-adult prices are not compared as equivalents
+  ---
+  duration_ms: 0.528274
+  type: 'test'
+  ...
+# Subtest: baggage filters exclude offers that do not confirm inclusion
+ok 55 - baggage filters exclude offers that do not confirm inclusion
+  ---
+  duration_ms: 0.150824
+  type: 'test'
+  ...
+# Subtest: departure filtering uses origin local time
+ok 56 - departure filtering uses origin local time
+  ---
+  duration_ms: 0.201199
+  type: 'test'
+  ...
+# Subtest: expired and sold-out offers are not bookable
+ok 57 - expired and sold-out offers are not bookable
+  ---
+  duration_ms: 0.122622
+  type: 'test'
+  ...
+# Subtest: expiry boundary is exclusive
+ok 58 - expiry boundary is exclusive
+  ---
+  duration_ms: 0.071126
+  type: 'test'
+  ...
+# Subtest: pagination deduplicates IDs and uses refreshed offer data
+ok 59 - pagination deduplicates IDs and uses refreshed offer data
+  ---
+  duration_ms: 0.145666
+  type: 'test'
+  ...
+# Subtest: filter count represents active values
+ok 60 - filter count represents active values
+  ---
+  duration_ms: 0.090995
+  type: 'test'
+  ...
+# Subtest: Arabic dictionary has complete English key parity
+ok 61 - Arabic dictionary has complete English key parity
+  ---
+  duration_ms: 0.205816
+  type: 'test'
+  ...
+# Subtest: Arabic translations are non-empty
+ok 62 - Arabic translations are non-empty
+  ---
+  duration_ms: 0.162271
+  type: 'test'
+  ...
+# Subtest: localized routes are normalized
+ok 63 - localized routes are normalized
+  ---
+  duration_ms: 0.202139
+  type: 'test'
+  ...
+# Subtest: Arabic is returned without English fallback
+ok 64 - Arabic is returned without English fallback
+  ---
+  duration_ms: 0.106498
+  type: 'test'
+  ...
+# (node:1649) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: a valid one-way search passes
+ok 65 - a valid one-way search passes
+  ---
+  duration_ms: 2.269005
+  type: 'test'
+  ...
+# Subtest: unconfigured form has no invented airports or dates
+ok 66 - unconfigured form has no invented airports or dates
+  ---
+  duration_ms: 0.237893
+  type: 'test'
+  ...
+# Subtest: same airport is rejected
+ok 67 - same airport is rejected
+  ---
+  duration_ms: 0.308608
+  type: 'test'
+  ...
+# Subtest: free-form city is not accepted as an airport code
+ok 68 - free-form city is not accepted as an airport code
+  ---
+  duration_ms: 0.134089
+  type: 'test'
+  ...
+# Subtest: past departure is rejected
+ok 69 - past departure is rejected
+  ---
+  duration_ms: 4.197986
+  type: 'test'
+  ...
+# Subtest: invalid date normalization is rejected
+ok 70 - invalid date normalization is rejected
+  ---
+  duration_ms: 0.150724
+  type: 'test'
+  ...
+# Subtest: leap day is accepted only in a leap year
+ok 71 - leap day is accepted only in a leap year
+  ---
+  duration_ms: 1.12606
+  type: 'test'
+  ...
+# Subtest: round-trip requires a return
+ok 72 - round-trip requires a return
+  ---
+  duration_ms: 0.14838
+  type: 'test'
+  ...
+# Subtest: return cannot precede departure
+ok 73 - return cannot precede departure
+  ---
+  duration_ms: 0.326955
+  type: 'test'
+  ...
+# Subtest: same-day round trip is permitted
+ok 74 - same-day round trip is permitted
+  ---
+  duration_ms: 0.460904
+  type: 'test'
+  ...
+# Subtest: infants cannot exceed adults
+ok 75 - infants cannot exceed adults
+  ---
+  duration_ms: 0.206907
+  type: 'test'
+  ...
+# Subtest: fractional, negative and excessive traveler counts are rejected
+ok 76 - fractional, negative and excessive traveler counts are rejected
+  ---
+  duration_ms: 0.260115
+  type: 'test'
+  ...
+# Subtest: URL round-trip preserves supported search criteria
+ok 77 - URL round-trip preserves supported search criteria
+  ---
+  duration_ms: 0.445201
+  type: 'test'
+  ...
+# Subtest: one-way serialization excludes stale return date
+ok 78 - one-way serialization excludes stale return date
+  ---
+  duration_ms: 0.118456
+  type: 'test'
+  ...
+# Subtest: malformed counts remain invalid instead of falling back silently
+ok 79 - malformed counts remain invalid instead of falling back silently
+  ---
+  duration_ms: 0.228428
+  type: 'test'
+  ...
+# Subtest: unsupported cabin is rejected
+ok 80 - unsupported cabin is rejected
+  ---
+  duration_ms: 0.212806
+  type: 'test'
+  ...
+# Subtest: filters round-trip without deleting search fields
+ok 81 - filters round-trip without deleting search fields
+  ---
+  duration_ms: 0.538028
+  type: 'test'
+  ...
+# Subtest: invalid filter values do not enable unknown constraints
+ok 82 - invalid filter values do not enable unknown constraints
+  ---
+  duration_ms: 0.165745
+  type: 'test'
+  ...
+# Subtest: local date helper does not convert through UTC
+ok 83 - local date helper does not convert through UTC
+  ---
+  duration_ms: 0.129242
+  type: 'test'
+  ...
+# Subtest: empty departure filter does not become midnight
+ok 84 - empty departure filter does not become midnight
+  ---
+  duration_ms: 0.105887
+  type: 'test'
+  ...
+1..84
+# tests 84
+# suites 0
+# pass 84
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 255.845591

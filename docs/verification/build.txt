@@ -1,0 +1,5 @@
+
+> manisa-travel-web@0.1.0 build
+> astro build
+
+sh: 1: astro: not found

@@ -1,0 +1,111 @@
+{
+  "sourceFile": "LeXUR0uk6wa0AQl30UGOm5",
+  "retrievedAt": "2026-11-01",
+  "note": "Temporary download sources only. Refresh these URLs through Figma before import if expired. No font files are distributed.",
+  "assets": [
+    {
+      "name": "coast",
+      "file": "coast.png",
+      "node": "198:3387",
+      "url": "https://www.figma.com/api/mcp/asset/b56db987-359f-4651-b134-dc66c4675b3d/b57da.png",
+      "width": 560,
+      "height": 598
+    },
+    {
+      "name": "scooter",
+      "file": "scooter.png",
+      "node": "198:3389",
+      "url": "https://www.figma.com/api/mcp/asset/b56db987-359f-4651-b134-dc66c4675b3d/fa6a3.png",
+      "width": 342,
+      "height": 280
+    },
+    {
+      "name": "trail",
+      "file": "trail.png",
+      "node": "198:3392",
+      "url": "https://www.figma.com/api/mcp/asset/b56db987-359f-4651-b134-dc66c4675b3d/592a1.png",
+      "width": 232,
+      "height": 112
+    },
+    {
+      "name": "istanbul",
+      "file": "istanbul.png",
+      "node": "198:3419",
+      "url": "https://www.figma.com/api/mcp/asset/b56db987-359f-4651-b134-dc66c4675b3d/96710.png",
+      "width": 756,
+      "height": 400
+    },
+    {
+      "name": "cappadocia",
+      "file": "cappadocia.png",
+      "node": "198:3423",
+      "url": "https://www.figma.com/api/mcp/asset/b56db987-359f-4651-b134-dc66c4675b3d/469ef.png",
+      "width": 472,
+      "height": 292
+    },
+    {
+      "name": "balloon",
+      "file": "balloon.png",
+      "node": "198:3427",
+      "url": "https://www.figma.com/api/mcp/asset/b56db987-359f-4651-b134-dc66c4675b3d/9a0dd.png",
+      "width": 156,
+      "height": 214
+    },
+    {
+      "name": "coast-mobile",
+      "file": "coast-mobile.png",
+      "node": "198:3487",
+      "url": "https://www.figma.com/api/mcp/asset/dfff8ac3-0a69-4d23-a05d-7aa0249468bf/f7e00.png",
+      "width": 216,
+      "height": 355
+    },
+    {
+      "name": "scooter-mobile",
+      "file": "scooter-mobile.png",
+      "node": "198:3489",
+      "url": "https://www.figma.com/api/mcp/asset/dfff8ac3-0a69-4d23-a05d-7aa0249468bf/3a088.png",
+      "width": 217,
+      "height": 205
+    },
+    {
+      "name": "istanbul-mobile",
+      "file": "istanbul-mobile.png",
+      "node": "198:3515",
+      "url": "https://www.figma.com/api/mcp/asset/dfff8ac3-0a69-4d23-a05d-7aa0249468bf/8e641.png",
+      "width": 350,
+      "height": 304
+    },
+    {
+      "name": "cappadocia-mobile",
+      "file": "cappadocia-mobile.png",
+      "node": "198:3519",
+      "url": "https://www.figma.com/api/mcp/asset/dfff8ac3-0a69-4d23-a05d-7aa0249468bf/4d1e6.png",
+      "width": 254,
+      "height": 205
+    },
+    {
+      "name": "balloon-mobile",
+      "file": "balloon-mobile.png",
+      "node": "198:3523",
+      "url": "https://www.figma.com/api/mcp/asset/dfff8ac3-0a69-4d23-a05d-7aa0249468bf/e7fef.png",
+      "width": 104,
+      "height": 148
+    },
+    {
+      "name": "mediterranean",
+      "file": "mediterranean.png",
+      "node": "200:1658",
+      "url": "https://www.figma.com/api/mcp/asset/bcfc32c4-614e-46c4-8edd-83abe9aff7ec/82858.png",
+      "width": 310,
+      "height": 92
+    },
+    {
+      "name": "plane",
+      "file": "plane.svg",
+      "node": "202:1782",
+      "url": "https://www.figma.com/api/mcp/asset/79f893d1-82bd-4cd5-9265-e970e76cac37/4eb08.svg",
+      "width": 16,
+      "height": 16
+    }
+  ]
+}

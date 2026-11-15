@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FlightResults from '../../../features/results/FlightResults';
+import { languagePaths, t } from '../../../i18n/index';
+import type { Locale } from '../../../lib/domain/types';
+import { publicApiConfig } from '../../../lib/api/environment';
+import '../../../styles/results.css';
+export const getStaticPaths = languagePaths;
+export const prerender = true;
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<BaseLayout
+  title={t(locale, 'resultsTitle')}
+  description={t(locale, 'resultsIntro')}
+  locale={locale}
+  noindex
+  pageClass="bg-page"
+>
+  <div class="site-container page-intro">
+    <p class="eyebrow">{t(locale, 'resultsBreadcrumb')}</p><h1>
+      <span class="hidden sm:inline">{t(locale, 'resultsTitle')}</span><span class="sm:hidden"
+        >{t(locale, 'resultsMobile')}</span
+      >
+    </h1><p class="intro-description hidden sm:block">{t(locale, 'resultsIntro')}</p>
+  </div>
+  <FlightResults locale={locale} config={publicApiConfig} client:load />
+  <noscript><p class="notice site-container">{t(locale, 'noScript')}</p></noscript>
+</BaseLayout>

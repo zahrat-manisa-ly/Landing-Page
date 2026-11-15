@@ -1,0 +1,30 @@
+---
+import AuthPage from '../../../components/auth/AuthPage.astro';
+import type { AuthMode } from '../../../features/auth/AuthApp';
+import type { Locale } from '../../../lib/domain/types';
+
+export function getStaticPaths() {
+  const flows = [
+    ['sign-in', 'sign-in'],
+    ['register', 'register'],
+    ['register/verify', 'verify-registration'],
+    ['forgot-password', 'forgot-password'],
+    ['reset-password', 'reset-password'],
+    ['invitation', 'invitation'],
+  ] as const;
+  return (['en', 'ar'] as const).flatMap((locale) =>
+    flows.map(([flow, mode]) => ({ params: { lang: locale, flow }, props: { locale, mode } })),
+  );
+}
+
+export const prerender = true;
+
+interface Props {
+  locale: Locale;
+  mode: AuthMode;
+}
+
+const { locale, mode } = Astro.props;
+---
+
+<AuthPage locale={locale} mode={mode} />

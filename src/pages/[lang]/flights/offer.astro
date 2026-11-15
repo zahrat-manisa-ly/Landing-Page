@@ -1,0 +1,39 @@
+---
+import { existsSync } from 'node:fs';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FlightDetails from '../../../features/details/FlightDetails';
+import { languagePaths, t } from '../../../i18n/index';
+import type { Locale } from '../../../lib/domain/types';
+import { publicApiConfig } from '../../../lib/api/environment';
+import '../../../styles/details.css';
+export const getStaticPaths = languagePaths;
+export const prerender = true;
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const planeAvailable = existsSync('public/design/plane.svg');
+---
+
+<BaseLayout
+  title={t(locale, 'detailsTitle')}
+  description={t(locale, 'detailsIntro')}
+  locale={locale}
+  noindex
+  pageClass="bg-page"
+>
+  <div class="details-container">
+    <div class="page-intro">
+      <p class="eyebrow">{t(locale, 'detailsBreadcrumb')}</p><h1>
+        <span class="hidden sm:inline">{t(locale, 'detailsTitle')}</span><span class="sm:hidden"
+          >{t(locale, 'detailsMobile')}</span
+        >
+      </h1><p class="intro-description">{t(locale, 'detailsIntro')}</p>
+    </div><FlightDetails
+      locale={locale}
+      config={publicApiConfig}
+      planeAvailable={planeAvailable}
+      client:load
+    /><noscript><p class="notice">{t(locale, 'noScript')}</p></noscript>
+  </div>
+</BaseLayout>

@@ -1,0 +1,21 @@
+{
+  "project": "MANISA Travel",
+  "updated": "2026-11-01",
+  "milestone": "Foundation and P-001 through P-004 source implementation",
+  "status": "DRAFT",
+  "codeWorkAuthorizedBy": "User: ok implement",
+  "sourceFileKey": "LeXUR0uk6wa0AQl30UGOm5",
+  "implementedPageSources": ["P-001", "P-002", "P-003", "P-004"],
+  "reviewCheckpoint": "P-001 first; additional discovery pages remain draft",
+  "fullBuild": "BLOCKED_DEPENDENCY_INSTALLATION",
+  "visualQA": "NOT_RUN",
+  "liveAPIIntegration": "BLOCKED_MISSING_CONTRACT",
+  "assetExportsPending": 13,
+  "unitTests": {
+    "passed": 84,
+    "failed": 0
+  },
+  "releaseApproved": false,
+  "remoteRepository": null,
+  "deployment": null
+}

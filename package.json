@@ -1,0 +1,52 @@
+{
+  "name": "manisa-travel-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "MANISA Travel - Figma-first Astro frontend with React islands and a configurable backend API boundary",
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0",
+    "check": "astro check",
+    "check:core": "tsc -p tsconfig.core.json",
+    "test": "node --experimental-strip-types --test tests/unit/*.test.ts",
+    "openapi:generate": "openapi-typescript openapi.json -o src/lib/api/generated/openapi.d.ts",
+    "openapi:check": "node scripts/check-openapi.mjs",
+    "test:e2e": "playwright test --grep-invert \"visual review\"",
+    "test:live": "playwright test --config playwright.live.config.ts",
+    "test:visual": "playwright test visual.spec.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "assets:import": "node scripts/import-assets.mjs",
+    "assets:check": "node scripts/check-assets.mjs",
+    "release:check": "npm run openapi:check && npm run check && npm run lint:boundaries && npm test && npm run assets:check && npm run build && npm run test:e2e",
+    "lint:boundaries": "node scripts/check-source.mjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "7.0.1",
+    "@fontsource-variable/alexandria": "^5.2.0",
+    "@fontsource-variable/inter": "^5.2.0",
+    "@tailwindcss/vite": "4.3.3",
+    "@tanstack/react-query": "^5.107.1",
+    "astro": "7.4.12",
+    "openapi-fetch": "^0.17.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "tailwindcss": "4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "openapi-typescript": "^7.13.0",
+    "prettier": "^3.5.0",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "~5.8.3"
+  }
+}

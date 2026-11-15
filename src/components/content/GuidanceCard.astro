@@ -1,0 +1,79 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  description: string;
+  highlight?: boolean;
+  divider?: boolean;
+}
+const { number, title, description, highlight = false, divider = true } = Astro.props;
+---
+
+<article class:list={['guidance-card', { highlight, 'has-divider': divider }]}>
+  <span class="guidance-number">{number}</span><h3>{title}</h3><p>{description}</p>
+</article>
+<style>
+  .guidance-card {
+    padding: 22px 23px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    min-height: 237px;
+  }
+  .highlight {
+    background: var(--brand-subtle);
+  }
+  .guidance-number {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    color: var(--action);
+    display: block;
+    min-height: 34px;
+  }
+  .has-divider .guidance-number {
+    border-bottom: 1px solid var(--line);
+  }
+  .guidance-card h3 {
+    font-size: 21px;
+    font-weight: 700;
+    margin-top: 29px;
+    line-height: 28px;
+  }
+  .guidance-card p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 24px;
+    line-height: 21px;
+  }
+  @media (max-width: 639px) {
+    .guidance-card {
+      min-height: 151px;
+      padding: 15px 17px;
+    }
+    .guidance-card h3 {
+      font-size: 16px;
+      line-height: 20px;
+      margin-top: 16px;
+    }
+    .guidance-card p {
+      font-size: 13px;
+      line-height: 18px;
+      margin-top: 13px;
+    }
+    .guidance-number {
+      min-height: 36px;
+    }
+  }
+  .guidance-card:not(.has-divider) .guidance-number {
+    font-size: 20px;
+  }
+  .guidance-card:not(.has-divider) h3 {
+    font-size: 20px;
+  }
+  @media (max-width: 639px) {
+    .guidance-card:not(.has-divider) .guidance-number,
+    .guidance-card:not(.has-divider) h3 {
+      font-size: 17px;
+    }
+  }
+</style>

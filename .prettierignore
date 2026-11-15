@@ -1,0 +1,7 @@
+node_modules
+dist
+.astro
+public/design
+playwright-report
+test-results
+src/lib/api/generated/openapi.d.ts

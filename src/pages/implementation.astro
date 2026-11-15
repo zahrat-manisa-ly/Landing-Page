@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export const prerender = true;
+---
+
+<BaseLayout title="Implementation status" locale="en" noindex>
+  <section class="site-container py-16">
+    <p class="eyebrow">DEVELOPMENT HANDOFF / NOT A LIVE BOOKING SERVICE</p><h1
+      class="mt-6 text-4xl font-bold"
+    >
+      MANISA implementation status
+    </h1><div class="mt-8 max-w-3xl space-y-6 text-muted">
+      <p>
+        This first source-code milestone covers the homepage, flight search, results and flight
+        details in English and draft Arabic. Actual airport, inventory, price and fare-rule data
+        must come from the configured backend API.
+      </p><p>
+        Booking, payment, accounts, support and legal pages are not implemented yet. Their
+        navigation items are deliberately unavailable. No real booking or charge can be created by
+        this repository.
+      </p><p>
+        Design images must be exported to public/design. Missing assets are explicitly identified on
+        the page; they are not replaced by unrelated stock imagery. The repository's README and
+        verification report list the integration and release blockers.
+      </p><p>
+        A successful build, browser tests and Figma screenshot review are required before this
+        milestone can be accepted for deployment.
+      </p>
+    </div><a class="btn btn-primary mt-10" href="/en/">Open homepage</a>
+  </section>
+</BaseLayout>

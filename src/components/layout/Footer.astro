@@ -1,0 +1,96 @@
+---
+import { route, t, type TranslationKey } from '../../i18n/index';
+import type { Locale } from '../../lib/domain/types';
+import PendingLink from '../ui/PendingLink.astro';
+interface Props {
+  locale: Locale;
+  currency: string;
+}
+const { locale, currency } = Astro.props;
+const main: TranslationKey[] = ['manage', 'support', 'faq', 'about'];
+const legal: TranslationKey[] = ['terms', 'privacy', 'cookies', 'accessibility'];
+---
+
+<footer class="site-footer">
+  <div class="site-container">
+    <a class="footer-brand" href={route(locale)}>MANISA / TRAVEL</a>
+    <div class="footer-links">
+      <nav aria-label={t(locale, 'flights')}>
+        <a href={route(locale, 'flights')}>{t(locale, 'flights')}</a>{
+          main.map((key) => <PendingLink locale={locale}>{t(locale, key)}</PendingLink>)
+        }
+      </nav>
+      <nav aria-label={t(locale, 'terms')}>
+        {legal.map((key) => <PendingLink locale={locale}>{t(locale, key)}</PendingLink>)}
+      </nav>
+    </div>
+    <div class="footer-meta">
+      <a href={route(locale === 'en' ? 'ar' : 'en')} lang={locale === 'en' ? 'ar' : 'en'}
+        >{
+          locale === 'en'
+            ? 'EN / \u0627\u0644\u0639\u0631\u0628\u064a\u0629'
+            : 'English / \u0627\u0644\u0639\u0631\u0628\u064a\u0629'
+        }</a
+      ><span>{currency}</span><span>&copy; MANISA Travel</span><a href="/implementation/"
+        >{t(locale, 'status')}</a>
+    </div>
+  </div>
+</footer>
+<style>
+  .site-footer {
+    min-height: 200px;
+    padding-block: 30px 28px;
+    background: var(--sea);
+    color: var(--on-action);
+  }
+  .footer-brand {
+    font-size: 21px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    margin-block: 29px 32px;
+  }
+  .footer-links nav {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+  .site-footer a {
+    text-decoration: none;
+  }
+  .site-footer a:hover {
+    text-decoration: underline;
+  }
+  .footer-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    font-size: 12px;
+  }
+  .site-footer :global([aria-disabled='true']) {
+    opacity: 0.75;
+  }
+  @media (max-width: 899px) {
+    .footer-links {
+      flex-direction: column;
+      gap: 30px;
+    }
+    .site-footer {
+      min-height: 320px;
+    }
+    .footer-brand {
+      font-size: 22px;
+    }
+    .footer-links nav {
+      gap: 20px 26px;
+    }
+    .footer-meta {
+      gap: 14px 20px;
+    }
+  }
+</style>

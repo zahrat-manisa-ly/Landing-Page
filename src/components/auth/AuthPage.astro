@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AuthApp, { type AuthMode } from '../../features/auth/AuthApp';
+import { authText, type AuthMessageKey } from '../../features/auth/messages';
+import type { Locale } from '../../lib/domain/types';
+import { publicApiConfig } from '../../lib/api/environment';
+import '../../styles/auth.css';
+
+interface Props {
+  locale: Locale;
+  mode: AuthMode;
+}
+
+const { locale, mode } = Astro.props;
+const content: Record<AuthMode, { title: AuthMessageKey; intro: AuthMessageKey }> = {
+  'sign-in': { title: 'signInTitle', intro: 'signInIntro' },
+  register: { title: 'registerTitle', intro: 'registerIntro' },
+  'verify-registration': { title: 'verifyTitle', intro: 'verifyIntro' },
+  'forgot-password': { title: 'forgotTitle', intro: 'forgotIntro' },
+  'reset-password': { title: 'resetTitle', intro: 'resetIntro' },
+  invitation: { title: 'invitationTitle', intro: 'invitationIntro' },
+};
+const copy = content[mode];
+---
+
+<BaseLayout
+  title={authText(locale, copy.title)}
+  description={authText(locale, copy.intro)}
+  locale={locale}
+  noindex
+  pageClass="bg-page"
+>
+  <section class="auth-page">
+    <div class="auth-shell">
+      <div class="auth-main">
+        <header class="auth-intro">
+          <p class="eyebrow">{authText(locale, 'accountEyebrow')}</p>
+          <h1>{authText(locale, copy.title)}</h1>
+          <p>{authText(locale, copy.intro)}</p>
+        </header>
+        <div class="auth-app">
+          <AuthApp
+            locale={locale}
+            mode={mode}
+            available={Boolean(publicApiConfig.baseUrl)}
+            client:only="react"
+          />
+          <noscript><p class="notice">{authText(locale, 'noScript')}</p></noscript>
+        </div>
+      </div>
+      <aside class="auth-aside" aria-label={authText(locale, 'secureTitle')}>
+        <span class="auth-aside-number">05 / ACCOUNT ACCESS</span>
+        <h2>{authText(locale, 'secureTitle')}</h2>
+        <p>{authText(locale, 'secureText')}</p>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

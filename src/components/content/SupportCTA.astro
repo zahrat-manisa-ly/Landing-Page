@@ -1,0 +1,81 @@
+---
+import type { Locale } from '../../lib/domain/types';
+import { t } from '../../i18n/index';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<section class="support-cta" data-section="P-001-S07">
+  <div class="site-container">
+    <div>
+      <h2>
+        <span class="support-desktop">{t(locale, 'needHelp')}</span><span class="support-mobile"
+          >{t(locale, 'needHelpMobile')}</span>
+      </h2><p>
+        <span class="support-desktop">{t(locale, 'supportText')}</span><span class="support-mobile"
+          >{t(locale, 'supportTextMobile')}</span>
+      </p>
+    </div><span role="link" aria-disabled="true" class="btn btn-primary" title={t(locale, 'future')}
+      >{t(locale, 'visitSupport')} <span aria-hidden="true">&rarr;</span></span>
+  </div>
+</section>
+<style>
+  .support-cta {
+    background: var(--brand-subtle);
+    min-height: 182px;
+    padding-block: 38px;
+  }
+  .support-cta > .site-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .support-cta h2 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 34px;
+  }
+  .support-cta p {
+    font-size: 15px;
+    margin-top: 20px;
+  }
+  .support-cta .btn {
+    min-width: 210px;
+  }
+  .support-mobile {
+    display: none;
+  }
+  @media (max-width: 639px) {
+    .support-cta {
+      padding: 20px;
+      min-height: 180px;
+    }
+    .support-cta > .site-container {
+      width: 100%;
+      display: block;
+    }
+    .support-cta h2 {
+      font-size: 24px;
+      line-height: 29px;
+    }
+    .support-cta p {
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    .support-cta .btn {
+      width: 100%;
+      min-height: 50px;
+      margin-top: 20px;
+      justify-content: space-between;
+    }
+    .support-desktop {
+      display: none;
+    }
+    .support-mobile {
+      display: inline;
+    }
+  }
+</style>

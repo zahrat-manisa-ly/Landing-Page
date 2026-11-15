@@ -1,0 +1,251 @@
+.flight-search {
+  padding: 24px 26px 30px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  min-height: 270px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+.search-top {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  margin-bottom: 44px;
+}
+.search-top h2 {
+  font-size: 19px;
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 24px;
+}
+.trip-types {
+  display: flex;
+  gap: 18px;
+}
+.trip-types label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--action);
+  white-space: nowrap;
+}
+.search-cabin-caption {
+  font-size: 12px;
+  color: var(--muted);
+  margin-inline-start: auto;
+}
+.search-fields {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 0.95fr) minmax(0, 0.95fr)
+    minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+}
+.search-submit {
+  align-self: start;
+  margin-top: 10px;
+  min-height: 54px;
+  padding-inline: 16px;
+  gap: 8px;
+}
+.search-inventory {
+  margin-top: 30px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.connection-note {
+  margin-top: 16px;
+  font-size: 12px;
+  padding: 12px;
+  background: var(--brand-subtle);
+  color: var(--ink);
+  border-inline-start: 3px solid var(--action);
+}
+.airport-field,
+.travelers-field {
+  position: relative;
+  min-width: 0;
+}
+.airport-options {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% + 6px);
+  min-width: 260px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  z-index: 20;
+  max-height: 300px;
+  overflow: auto;
+  padding: 8px;
+}
+.airport-options:dir(rtl) {
+  text-align: right;
+}
+.airport-options ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.airport-options li {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.airport-options [aria-selected='true'] {
+  background: var(--brand-subtle);
+}
+.airport-options [role='status']:not(:empty) {
+  padding: 10px;
+}
+.travelers-value {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 38px;
+}
+.traveler-options {
+  position: absolute;
+  inset-inline-end: 0;
+  top: calc(100% + 6px);
+  width: 300px;
+  max-width: calc(100vw - 48px);
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  z-index: 21;
+}
+.traveler-counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.traveler-counter input {
+  width: 70px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.cabin-select {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  margin-block: 16px;
+}
+.cabin-select select {
+  border: 1px solid var(--line);
+  padding: 10px;
+  background: var(--surface);
+}
+.search-title-mobile {
+  display: none;
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .search-fields {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .search-top {
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .search-cabin-caption {
+    display: none;
+  }
+  .search-submit {
+    margin-top: 0;
+    min-height: 74px;
+  }
+}
+@media (max-width: 639px) {
+  .flight-search {
+    padding: 20px 17px 30px;
+    min-height: 560px;
+  }
+  .search-top {
+    display: block;
+    margin-bottom: 28px;
+  }
+  .search-top h2 {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 18px;
+  }
+  .trip-types {
+    gap: 20px;
+  }
+  .trip-types label {
+    font-size: 14px;
+  }
+  .search-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px 12px;
+  }
+  .airport-field,
+  .travelers-field,
+  .search-submit {
+    grid-column: 1/-1;
+  }
+  .search-submit {
+    margin-top: 8px;
+    min-height: 56px;
+    justify-content: space-between;
+  }
+  .search-inventory {
+    margin-top: 26px;
+    font-size: 12px;
+  }
+  .search-cabin-caption,
+  .search-title-desktop {
+    display: none;
+  }
+  .search-title-mobile {
+    display: inline;
+  }
+  .airport-options {
+    min-width: 0;
+  }
+  .traveler-options {
+    width: 100%;
+  }
+  .field input[type='date'] {
+    font-size: 12px;
+  }
+}
+
+/* Match the approved 390px field and action geometry without clipping validation. */
+@media (min-width: 1200px) {
+  .search-fields {
+    grid-template-columns:
+      minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 0.95fr) minmax(0, 0.95fr)
+      minmax(0, 1.02fr) auto;
+  }
+  .search-submit {
+    min-width: 108px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 639px) {
+  .search-top {
+    margin-bottom: 22px;
+  }
+  .search-top h2 {
+    margin-bottom: 14px;
+  }
+  .field input,
+  .field select {
+    min-height: 31px;
+  }
+  .travelers-value {
+    min-height: 31px;
+  }
+}
